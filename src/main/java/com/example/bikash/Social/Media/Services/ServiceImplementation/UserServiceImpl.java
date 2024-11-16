@@ -22,11 +22,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User registerUser(User user) {
 
-        // Check if user already exists by email (or username)
         Optional<User> existingUserOpt = userRepository.findByEmail(user.getEmail());
 
         if (existingUserOpt.isPresent()) {
-            // If the user exists, throw an exception (custom or standard)
+
             throw new DuplicationItemException("Email", "EmailId", user.getEmail());
 
         }
@@ -95,8 +94,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> searchUsers(String query) {
         if (query == null || query.trim().isEmpty()) {
-            // If query is empty or null, return an empty list (or handle it differently as needed)
-            return Collections.emptyList();  // Or throw an exception or return all users, depending on your use case
+            return Collections.emptyList();
         }
 
         // Otherwise, call the repository method to search for users
