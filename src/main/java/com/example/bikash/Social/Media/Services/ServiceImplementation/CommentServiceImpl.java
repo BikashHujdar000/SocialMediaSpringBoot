@@ -62,7 +62,7 @@ public class CommentServiceImpl implements CommentService {
         } else {
             comment.getLiked().add(user);
         }
-        return comment;
+        return this.commentRepository.save(comment);
     }
 
     @Override

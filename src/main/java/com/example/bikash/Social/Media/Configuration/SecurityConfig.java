@@ -37,6 +37,7 @@ public class SecurityConfig {
                         .requestMatchers("/user/**").authenticated()
                         .requestMatchers("/posts/**").authenticated()
                         .requestMatchers("/comments/**").authenticated()
+                        .requestMatchers("/reels/**").authenticated()
 
 
                 )

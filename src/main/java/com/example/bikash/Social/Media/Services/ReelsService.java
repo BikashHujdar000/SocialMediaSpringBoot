@@ -9,12 +9,12 @@ public interface ReelsService {
 
     Reel creteReel(Reel reel);
 
-    void deleteReels(Long reelId);
 
     List<Reel> getAllReels();
 
     List<Reel>findByUser();
 
+    Reel likeReel(Long reelId) ;
 
 
 }
