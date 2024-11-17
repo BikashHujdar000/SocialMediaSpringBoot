@@ -3,6 +3,7 @@ package com.example.bikash.Social.Media.Entittes;
 
 import com.example.bikash.Social.Media.Domain.USER_ROLE;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,11 +26,19 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+
+    @JsonIgnore
     private String password;
     private String gender;
     private String role = String.valueOf(USER_ROLE.USER);
     private List<Long> followers = new ArrayList<>();
     private List<Long> followings = new ArrayList<>();
+
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
+
+    private  List<Reel>reels= new ArrayList<>();
 
 
 

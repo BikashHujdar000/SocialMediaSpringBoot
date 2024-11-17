@@ -27,7 +27,7 @@ public class Post {
     private String video;
     private LocalDateTime createdAt;
 
-    @OneToMany
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
 
     @ManyToMany

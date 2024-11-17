@@ -1,6 +1,7 @@
 package com.example.bikash.Social.Media.Entittes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,25 +15,28 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Comment {
+public class Reel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String comment;
-
-    private LocalDateTime createdAt;
+    private String title;
+    private String video;
+    private LocalDateTime createdAt ;
 
     @ManyToMany
     private List<User> liked = new ArrayList<>();
 
-    @ManyToOne
-    private User user;
+    @OneToMany(mappedBy = "reel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private  List<ReelComment> comments = new ArrayList<>();
 
-    @ManyToOne()
-    @JsonIgnore
-    private Post post;
+    @JsonBackReference
+    @ManyToOne
+    private  User user;
 
 
 }
+
+
+
+
