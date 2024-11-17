@@ -6,6 +6,7 @@ import com.example.bikash.Social.Media.Exceptions.ResourceNotFoundException;
 import com.example.bikash.Social.Media.Repositories.UserRepository;
 import com.example.bikash.Social.Media.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -18,6 +19,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     @Override
     public User registerUser(User user) {
@@ -29,9 +33,20 @@ public class UserServiceImpl implements UserService {
             throw new DuplicationItemException("Email", "EmailId", user.getEmail());
 
         }
+
+        String password = this.passwordEncoder.encode(user.getPassword());
+        User userToSave = new User();
+
+
+        userToSave.setEmail(user.getEmail());
+        userToSave.setFirstName(user.getFirstName());
+        userToSave.setLastName(user.getLastName());
+        userToSave.setGender(user.getGender());
+        userToSave.setPassword(password);
+
         // Save the new user if it doesn't exist
-        this.userRepository.save(user);
-        return user;
+     User savedUser =    this.userRepository.save(userToSave);
+        return  savedUser;
     }
 
 

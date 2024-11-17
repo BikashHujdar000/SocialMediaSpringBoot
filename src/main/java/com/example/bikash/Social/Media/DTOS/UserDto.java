@@ -1,9 +1,11 @@
-package com.example.bikash.Social.Media.Entittes;
-
+package com.example.bikash.Social.Media.DTOS;
 
 import com.example.bikash.Social.Media.Domain.USER_ROLE;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import com.example.bikash.Social.Media.Entittes.Post;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,31 +13,20 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "users")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class User {
+@NoArgsConstructor
+public class UserDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
     private String gender;
     private String role = String.valueOf(USER_ROLE.USER);
     private List<Long> followers = new ArrayList<>();
     private List<Long> followings = new ArrayList<>();
-
-
-
-    @JsonIgnore
-    @OneToMany
-    private  List<Post> savedPost = new ArrayList<>();
+    private  List<PostDto> savedPost = new ArrayList<>();
 
 
 }

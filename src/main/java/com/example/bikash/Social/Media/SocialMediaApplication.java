@@ -14,7 +14,6 @@ public class SocialMediaApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-
 		System.out.println(" Data Base connected with  Social Media App");
 
 

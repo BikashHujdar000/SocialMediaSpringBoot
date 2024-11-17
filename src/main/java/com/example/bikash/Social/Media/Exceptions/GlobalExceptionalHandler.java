@@ -26,8 +26,18 @@ public class GlobalExceptionalHandler {
 
         String message = ex.getMessage();
         APiResponse response = new APiResponse(message,false);
-        return  new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        return  new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
     }
+
+    @ExceptionHandler(UnauthorizedTaskException.class)
+    public  ResponseEntity<APiResponse> UnauthorizedTaskException (UnauthorizedTaskException ex)
+    {
+
+        String message = ex.getMessage();
+        APiResponse response = new APiResponse(message,false);
+        return  new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
+    }
+
 
 
 
