@@ -38,6 +38,8 @@ public class SecurityConfig {
                         .requestMatchers("/posts/**").authenticated()
                         .requestMatchers("/comments/**").authenticated()
                         .requestMatchers("/reels/**").authenticated()
+                        .requestMatchers("/stories/**").authenticated()
+                        .requestMatchers("/chat/**").authenticated()
 
 
                 )

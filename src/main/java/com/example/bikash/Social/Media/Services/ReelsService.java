@@ -8,7 +8,9 @@ import java.util.List;
 public interface ReelsService {
 
     Reel creteReel(Reel reel);
+// delete reels
 
+ void delete( Long reelId);
 
     List<Reel> getAllReels();
 

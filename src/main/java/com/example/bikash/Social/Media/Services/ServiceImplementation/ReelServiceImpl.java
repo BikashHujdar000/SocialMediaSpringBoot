@@ -42,6 +42,11 @@ public class ReelServiceImpl implements ReelsService {
 
     }
 
+    @Override
+    public void delete(Long reelId) {
+
+    }
+
 
     @Override
     public List<Reel> getAllReels() {
