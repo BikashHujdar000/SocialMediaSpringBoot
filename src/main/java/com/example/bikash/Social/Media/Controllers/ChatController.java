@@ -34,8 +34,7 @@ public class ChatController {
         Chat chat = this.chatService.createChat(userX);
         return new ResponseEntity<>(chat, HttpStatus.CREATED);
 
-//        String string = chatRequest.getUserIdX().toString();
-//        return new ResponseEntity<>(string, HttpStatus.CREATED);
+
 
     }
 
@@ -43,7 +42,6 @@ public class ChatController {
     @GetMapping("/user")
     public ResponseEntity<List<Chat>> getUsersChat() {
         List<Chat> usersChat = this.chatService.findUsersChat();
-
         return new ResponseEntity<>(usersChat, HttpStatus.OK);
 
     }
